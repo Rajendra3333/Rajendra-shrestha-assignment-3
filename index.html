@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Form Example</title>
+<style>
+/* Basic styling for the form */
+form {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+#output {
+  margin-top: 20px;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+  <h1>Welcome to the Interactive Page</h1>
+
+
+<form id="myForm">
+  <label for="userInput">Type something and hit Enter to print what you typed:</label>
+  <input type="text" id="userInput" name="userInput" placeholder="Type here...">
+</form>
+
+<div id="output"></div>
+<div id="container">
+  <button id="changeText">Click me to submit</button>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const textToChange = document.getElementById('changeText');
+
+    textToChange.addEventListener('click', function() {
+        textToChange.textContent = "submitted";
+    });
+});
+// JavaScript to capture input and do something interesting
+document.getElementById("myForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  var userInput = document.getElementById("userInput").value;
+  var outputDiv = document.getElementById("output");
+  
+  // Do something interesting with the user input
+  outputDiv.textContent = "You typed: " + userInput;
+  
+  // Optional: Change some aspect of CSS based on user input
+  outputDiv.style.color = "blue"; // Change text color to blue
+});
+</script>
+
+</body>
+</html>
